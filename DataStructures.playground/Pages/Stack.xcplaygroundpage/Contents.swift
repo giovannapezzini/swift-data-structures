@@ -13,8 +13,9 @@
 
  var `isEmpty` → peek == nil
  
- * note:
- Add **CustomStringConvertible** extension to change print description and **ExpressibleByArrayList** to allow the stack to be initialized with an array literal.
+* callout(Extensions):
+**CustomStringConvertible** → used to change print description\
+**ExpressibleByArrayList** → to allow the stack to be initialized with an array literal.
 */
 
 var stack = Stack([1, 2, 3])
