@@ -16,6 +16,7 @@
  * note:
  Add **CustomStringConvertible** extension to change print description and **ExpressibleByArrayList** to allow the stack to be initialized with an array literal.
 */
+
 var stack = Stack([1, 2, 3])
 stack.push(4)
 stack.pop()
@@ -26,6 +27,9 @@ var arrayLiteralStack: Stack = [1, 2, 3]
 print(arrayLiteralStack)
 
 /*:
+ 
+ # Challenge
+ 
  * experiment:
  Use a stack to check for balanced parentheses
  */
