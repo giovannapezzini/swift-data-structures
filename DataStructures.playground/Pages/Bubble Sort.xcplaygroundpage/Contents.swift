@@ -15,8 +15,24 @@ Worst case scenario O(n²)
  ### Example
  
  9 → 4 → 10 → 3\
- 4 → 9 → 3 → 10   *first pass*\
- 4 → 3 → 9 → 10   *second pass*\
- 3 → 4 → 9 → 10   *last pass, no need to swap any values*
-
+ 4 → 9 → 3 → 10   *swaps 4 and 9, 3 and 10*\
+ 4 → 3 → 9 → 10   *swaps 3 and 9*\
+ 3 → 4 → 9 → 10   *swaps 3 and 4*\
+ 3 → 4 → 9 → 10   *last pass, no need to swap values*\
+ 
  */
+
+func bubbleSort<T: Comparable>(_ array: inout [T]) {
+    guard array.count >= 2 else { return }
+    
+    for i in 0..<array.count {
+      for j in 1..<array.count - i {
+        if array[j] < array[j-1] {
+            array.swapAt(j-1, j)
+        }
+      }
+    }
+}
+
+var array = [9, 4, 10, 3]
+bubbleSort(&array)
