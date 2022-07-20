@@ -4,5 +4,7 @@
         <page name='Stack'/>
         <page name='Queues'/>
         <page name='Bubble Sort'/>
+        <page name='Selection Sort'/>
+        <page name='Insertion Sort'/>
     </pages>
 </playground>
