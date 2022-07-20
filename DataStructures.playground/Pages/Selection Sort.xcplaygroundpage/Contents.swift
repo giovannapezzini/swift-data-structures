@@ -10,7 +10,7 @@
  
  9 → 4 → 10 → 3    *find the lowest value*\
  3 → 4 → 10 → 9    *swaps 3 with the first value*\
- 9 → 4 → 9 → 10    *4 is already in place, 9 is the next lowest number*
+ 3 → 4 → 9 → 10    *4 is already in place, 9 is the next lowest number*
  
 */
 
