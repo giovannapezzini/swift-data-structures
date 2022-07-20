@@ -6,7 +6,7 @@
  
  The larger values in a set "bubble up" to the end of the collection.
  
- 🥶 One of the worst performing sorts (unsorted collections)
+ 🥶 One of the worst performing sorts (unsorted collections).
  
  * note:
 Best case scenario O(n)\
@@ -18,7 +18,7 @@ Worst case scenario O(n²)
  4 → 9 → 3 → 10   *swaps 4 and 9, 3 and 10*\
  4 → 3 → 9 → 10   *swaps 3 and 9*\
  3 → 4 → 9 → 10   *swaps 3 and 4*\
- 3 → 4 → 9 → 10   *last pass, no need to swap values*\
+ 3 → 4 → 9 → 10   *last pass, no need to swap values*
  
  */
 
