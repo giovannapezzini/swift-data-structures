@@ -13,3 +13,24 @@
  9 → 4 → 9 → 10    *4 is already in place, 9 is the next lowest number*
  
 */
+
+func selectionSort<T: Comparable>(_ array: inout [T]) {
+    guard array.count >= 2 else { return }
+    
+    for current in 0..<array.count - 1 {
+        var lowest = current
+        
+        for other in current + 1..<array.count {
+            if array[other] < array[lowest] {
+                lowest = other
+            }
+        }
+        
+        if current != lowest {
+            array.swapAt(current, lowest)
+        }
+    }
+}
+
+var array = [9, 4, 10, 3]
+selectionSort(&array)
