@@ -16,3 +16,16 @@ Best-case scenario, the data is already sorted: O(n)
  
 */
 
+func insertionSort<T: Comparable>(_ array: inout [T]) {
+    for i in 1..<array.count {
+        var currentIndex = i
+        
+        while currentIndex > 0 && array[currentIndex] < array[currentIndex-1] {
+            array.swapAt(currentIndex-1, currentIndex)
+            currentIndex -= 1
+        }
+    }
+}
+
+var array = [9, 4, 10, 3]
+insertionSort(&array)
