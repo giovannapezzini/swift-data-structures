@@ -7,5 +7,7 @@
         <page name='Selection Sort'/>
         <page name='Insertion Sort'/>
         <page name='Merge Sort'/>
+        <page name='Tree'/>
+        <page name='Binary Tree'/>
     </pages>
 </playground>
