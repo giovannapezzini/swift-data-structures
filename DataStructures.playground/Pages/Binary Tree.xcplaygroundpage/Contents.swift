@@ -23,7 +23,6 @@ var tree: BinaryNode<Int> = {
     
     return zero
 }()
-print(tree)
 
 /*:
  
@@ -52,7 +51,7 @@ extension BinaryNode {
 
 var inOrderArray: [Int] = []
 tree.traverseInOrder { inOrderArray.append($0) }
-print("inOrderArray = \(inOrderArray)")
+// [7, 1, 8, 0, 9, 5]
 
 /*:
 
@@ -80,7 +79,7 @@ extension BinaryNode {
 
 var preOrderArray: [Int] = []
 tree.traversePreOrder { preOrderArray.append($0) }
-print("preOrderArray = \(preOrderArray)")
+// [0, 1, 7, 8, 5, 9]
 
 /*:
 
@@ -109,4 +108,69 @@ extension BinaryNode {
 
 var postOrderArray: [Int] = []
 tree.traversePostOrder { postOrderArray.append($0) }
-print("postOrderArray = \(postOrderArray)")
+// [7, 8, 1, 9, 5, 0]
+
+/*:
+ # Challenge 🏆
+ 
+ * experiment:
+ Serialize a binary tree into an array.\
+Deserialize the resulting array into the same binary tree.
+ 
+ */
+
+extension BinaryNode {
+    func traversePreOrder(visit: (T?) -> Void) {
+        visit(value)
+        
+        if let leftChild = leftChild {
+            leftChild.traversePreOrder(visit: visit)
+        } else {
+            visit(nil)
+        }
+        
+        if let rightChild = rightChild {
+            rightChild.traversePreOrder(visit: visit)
+        } else {
+            visit(nil)
+        }
+    }
+}
+
+// time complexity O(n) space complexity O(n)
+func serialize<T>(_ node: BinaryNode<T>) -> [T?] {
+    var array: [T?] = []
+    node.traversePreOrder { array.append($0) }
+    return array
+}
+
+let serializedTree = serialize(tree)
+//: `serializedTree = [0, 1, 7, nil, nil, 8, nil, nil, 5, 9, nil, nil, nil]`
+
+// time complexity O(n) space complexity O(n)
+func deserialize<T>(_ array: inout [T?]) -> BinaryNode<T>? {
+    // removeLast() (constant time) instead of removeFirst() (linear time)
+    guard let value = array.removeLast() else { return nil }
+    
+    let node = BinaryNode(value: value)
+    node.leftChild = deserialize(&array)
+    node.rightChild = deserialize(&array)
+    
+    return node
+}
+
+func deserialize<T>(_ array: [T?]) -> BinaryNode<T>? {
+    var reversed = Array(array.reversed())
+    return deserialize(&reversed)
+}
+
+let deserializedTree = deserialize(serializedTree)
+/*:
+ ```
+      0
+     /  \
+   1     5
+  /  \   /
+ 7    8 9
+ ```
+ */
