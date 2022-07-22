@@ -2,43 +2,9 @@
  # Binary Tree
 
  Each node have, at most, two child nodes 🍃
- 
- # Types of Tree Traversal
- 
-  ### 1️⃣  In-Order Traversal
-  Starts at the root, goes to the left node and moves down to the left child. Having moved all the way down to a leaf node, it stores its data, moves to the parent and then to the right node.
-  
- Order of stored values:
- ```
- 
-       4  → start
-      /  \
-    2     6
-   /  \   /
-  1    3 5
- ```
- */
 
-extension BinaryNode {
-    func traverseInOrder(visit: (T) -> Void) {
-        leftChild?.traverseInOrder(visit: visit)
-        visit(value)
-        rightChild?.traverseInOrder(visit: visit)
-    }
-}
-
-/*:
- **In-Order Traversal in code**
-
-```
-      0
-     /  \
-   1     5
-  /  \   /
- 7    8 9
- 
-array = [7, 1, 8, 0, 9, 5]
-```
+  * note:
+  To test all types of tree traversal, we're going to use the following binary tree:
  */
 
 var tree: BinaryNode<Int> = {
@@ -57,9 +23,36 @@ var tree: BinaryNode<Int> = {
     
     return zero
 }()
+print(tree)
 
-var array: [Int] = []
-tree.traverseInOrder { array.append($0) }
+/*:
+ 
+ # Types of Tree Traversal
+ 
+  ### 1️⃣  In-Order Traversal
+  Starts at the root, goes to the left node and moves down to the left child. Having moved all the way down to a leaf node, it stores its data, moves to the parent and then to the right node.
+  
+ Order of stored values:
+ ```
+       4  → start
+      /  \
+    2     6
+   /  \   /
+  1    3 5
+ ```
+ */
+
+extension BinaryNode {
+    func traverseInOrder(visit: (T) -> Void) {
+        leftChild?.traverseInOrder(visit: visit)
+        visit(value)
+        rightChild?.traverseInOrder(visit: visit)
+    }
+}
+
+var inOrderArray: [Int] = []
+tree.traverseInOrder { inOrderArray.append($0) }
+print("inOrderArray = \(inOrderArray)")
 
 /*:
 
@@ -85,22 +78,9 @@ extension BinaryNode {
     }
 }
 
-/*:
- **Pre-Order Traversal in code**
-
-```
-      0
-     /  \
-   1     5
-  /  \   /
- 7    8 9
- 
-array = [0, 1, 7, 8, 5, 9]
-```
- */
-
 var preOrderArray: [Int] = []
 tree.traversePreOrder { preOrderArray.append($0) }
+print("preOrderArray = \(preOrderArray)")
 
 /*:
 
@@ -114,7 +94,7 @@ Visits the node after all of its children have been visited starting with the le
     /  \
   3     5
  /  \   /
-1   2  4
+1    2 4
 ```
  
 */
@@ -127,19 +107,6 @@ extension BinaryNode {
     }
 }
 
-/*:
- **Post-Order Traversal in code**
-
-```
-      0
-     /  \
-   1     5
-  /  \   /
- 7    8 9
- 
-array = [7, 8, 1, 9, 5, 0]
-```
- */
-
 var postOrderArray: [Int] = []
 tree.traversePostOrder { postOrderArray.append($0) }
+print("postOrderArray = \(postOrderArray)")
