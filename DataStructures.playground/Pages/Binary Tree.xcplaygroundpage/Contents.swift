@@ -101,3 +101,45 @@ array = [0, 1, 7, 8, 5, 9]
 
 var preOrderArray: [Int] = []
 tree.traversePreOrder { preOrderArray.append($0) }
+
+/*:
+
+ ### 3️⃣  Post-Order Traversal
+Visits the node after all of its children have been visited starting with the left child.
+ 
+ Order of stored values:
+
+```
+     6  → start
+    /  \
+  3     5
+ /  \   /
+1   2  4
+```
+ 
+*/
+
+extension BinaryNode {
+    func traversePostOrder(visit: (T) -> Void) {
+        leftChild?.traversePostOrder(visit: visit)
+        rightChild?.traversePostOrder(visit: visit)
+        visit(value)
+    }
+}
+
+/*:
+ **Post-Order Traversal in code**
+
+```
+      0
+     /  \
+   1     5
+  /  \   /
+ 7    8 9
+ 
+array = [7, 8, 1, 9, 5, 0]
+```
+ */
+
+var postOrderArray: [Int] = []
+tree.traversePostOrder { postOrderArray.append($0) }
