@@ -9,5 +9,6 @@
         <page name='Merge Sort'/>
         <page name='Tree'/>
         <page name='Binary Tree'/>
+        <page name='Binary Search'/>
     </pages>
 </playground>
